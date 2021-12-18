@@ -6,6 +6,11 @@ import { EDITAR_PROYECTO } from '../../graphql/Proyectos/mutations';
 
 const EditarProyectos = () => {
 
+
+    React.useEffect(()=>{
+        
+    },[])
+
     const {_id} = useParams();
     const [updateProyecto,{error}] = useMutation(EDITAR_PROYECTO)
 

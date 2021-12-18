@@ -38,6 +38,7 @@ const CREAR_USUARIO =   gql `
         ){
             _id
             rol
+            token
         }
     }
 
