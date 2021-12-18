@@ -3,12 +3,17 @@ import { Link, useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/react-hooks'
 import { GET_PROYECTO} from '../../graphql/Proyectos/queries'
 import { EDITAR_PROYECTO } from '../../graphql/Proyectos/mutations';
+import { withRouter } from 'react-router-dom';
 
-const EditarProyectos = () => {
+const EditarProyectos = (props) => {
 
 
     React.useEffect(()=>{
-        
+        const token = localStorage.getItem('token')
+        if(!token){
+            console.log("No existe token")
+            props.history.push('/login')
+        }  
     },[])
 
     const {_id} = useParams();
@@ -190,4 +195,4 @@ const EditarProyectos = () => {
     )
 }}
 
-export default EditarProyectos
+export default withRouter(EditarProyectos)

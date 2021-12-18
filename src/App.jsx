@@ -8,19 +8,26 @@ import Proyectos from './components/Proyectos/Proyectos.jsx';
 import EditarProyectos from './components/Proyectos/EditarProyectos.jsx';
 import Login from './components/Login/Login.jsx';
 import Register from './components/Login/Register.jsx'
-
+import jwt_decode from "jwt-decode";
+import React from 'react'
 
 function App() {
 
-  /* const token = localStorage.getItem('token')
-  const decoded = Jwt.verify(token, 'ESTAESLACLAVE')
-  
-  console.log(decoded) */
- 
+  const [token, setToken] = React.useState('')
+
+  React.useEffect(()=>{
+
+    setToken(localStorage.getItem('token'))
+    if(!token){
+        console.log("No existe token")
+    }         
+},[])
 
   return (
     <Router>
-      <Navbar />
+      { token ? <Navbar /> : null
+      }
+      
       <div className="container p-1">
       <Switch>
       

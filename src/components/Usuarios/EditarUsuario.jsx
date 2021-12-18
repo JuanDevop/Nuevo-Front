@@ -3,8 +3,20 @@ import { GET_USUARIO } from '../../graphql/Usuarios/queries'
 import { EDITAR_USUARIO } from '../../graphql/Usuarios/mutations';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/react-hooks'
+import { withRouter } from 'react-router-dom';
 
-const EditarUsuario = () => {
+const EditarUsuario = (props) => {
+
+    React.useEffect(()=>{
+
+        const token = localStorage.getItem('token')
+        if(!token){
+            console.log("No existe token")
+            props.history.push('/login')
+        }         
+    },[])
+
+
 
      const {_id} = useParams();
      const [updateUser] = useMutation(EDITAR_USUARIO)  
@@ -103,4 +115,4 @@ const EditarUsuario = () => {
     )
 }}
 
-export default EditarUsuario
+export default withRouter(EditarUsuario)

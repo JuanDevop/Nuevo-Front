@@ -2,10 +2,21 @@ import React from 'react'
 import { GET_USUARIOS } from '../../graphql/Usuarios/queries'
 import { useQuery } from '@apollo/react-hooks'
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 
+const Usuarios = (props) => {
 
-const Usuarios = () => {
+    React.useEffect(()=>{
+
+        const token = localStorage.getItem('token')
+        if(!token){
+            console.log("No existe token")
+            props.history.push('/login')
+        }         
+    },[])
+
+
 
     const {loading, data} = useQuery(GET_USUARIOS)
     
@@ -70,4 +81,4 @@ const Usuarios = () => {
     )
 }}
 
-export default Usuarios
+export default withRouter(Usuarios)

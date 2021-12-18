@@ -6,7 +6,7 @@ import {withRouter} from 'react-router-dom'
 
 const Register = (props) => {
 
-    const[datosUsuario, setDatosUsuario] = React.useState({})
+   
     const [datosRegistro, setDatosRegistro ] = React.useState({estado:"Pendiente", rol:"Usuario"})
     const [createUser,{error,data}] = useMutation(CREAR_USUARIO,
         {

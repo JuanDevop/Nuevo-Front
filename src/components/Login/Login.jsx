@@ -11,7 +11,11 @@ const Login = () => {
                         Login
                     </div>
                     <div className="card-body">
-                        <form className='row needs-validation'>
+                        <form className='row needs-validation' onSubmit={async e => {
+                            e.preventDefault();
+                            
+                        }
+                        }>
                             <div>
                                 <label for="validationCustom04" className="form-label">Correo</label>
                                 <input type="text" className="form-control" id="validationCustom04" required />
